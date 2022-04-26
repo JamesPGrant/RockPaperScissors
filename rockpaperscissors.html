@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+            
+            let playerScore = 0;
+            let computerScore = 0;
+
+            function computerPlay(){
+                let rockpaperscissors = ['rock','paper','scissors'];
+                let choice = rockpaperscissors[Math.floor(Math.random()  * rockpaperscissors.length)];
+                 return choice;
+            }
+            //picks a random string
+
+            function playerPlay(){
+                let rockpaperscissors = ['rock', 'paper', 'scissors'];
+                playerChoice1 = window.prompt("Enter rock, paper, or scissors: ");
+                playerChoice2 = playerChoice1.toLowerCase();
+                    return playerChoice2;
+            }
+            //makes the string the player enters case insensitive
+
+            computerPlay();
+
+            function playRound(playerSelection, computerSelection){
+                let rockpaperscissors = ['rock', 'paper', 'scissors'];
+                 if(playerSelection === 'rock' && computerSelection === 'rock'){
+                    playerScore+=1 
+                    computerScore +=1;
+                    return "Its a tie! Rock and Rock!!!";
+                     //playerScore+=1 
+                     //computerScore +=1; 
+                } else if (playerSelection === 'rock' && computerSelection === 'scissors'){
+                    playerScore+=1
+                    computerScore +=0
+                    return "You Won! Rock beats Scissors!!!";
+                    //playerScore+=1
+                    //computerScore +=0
+                } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
+                    playerScore+=1
+                    computerScore +=0
+                    return "You Won! Scissors beats Paper!!!";
+                    //playerScore+=1
+                    //computerScore +=0
+                } else if (playerSelection === 'paper' && computerSelection === 'rock'){
+                    playerScore+=1
+                    computerScore +=0
+                    return "You Won! Paper beats Rock!!!";
+                    //playerScore+=1
+                    //computerScore +=0
+                }else if (playerSelection === 'rock' && computerSelection === 'paper'){
+                    playerScore+=0
+                    computerScore +=1
+                    return"You Lost! Rock loses to Paper!!!";
+                    //playerScore+=0
+                    //computerScore +=1
+                }else if (playerSelection === 'scissors' && computerSelection === 'rock'){
+                    playerScore+=0
+                    computerScore +=1
+                    return "You Lost! Scissors loses to Rock!!!";
+                   // playerScore+=0
+                   // computerScore +=1
+                }else if (playerSelection === 'paper' && computerSelection === 'scissors'){
+                    playerScore+=0
+                    computerScore +=1
+                    return "You Lost! Paper loses to Scissors!!!";
+                    //playerScore+=0
+                    //computerScore +=1
+                }if(playerSelection === 'paper' && computerSelection === 'paper'){
+                    playerScore+=1 
+                    computerScore +=1;
+                    return "Its a tie! Paper and Paper!!!";
+                    //playerScore+=1 
+                    //computerScore +=1;
+                }if(playerSelection === 'scissors' && computerSelection === 'scissors'){
+                    playerScore+=1 
+                    computerScore +=1;
+                    //placed before return function so that the code can be accessed and the for loop can access the playerScore and computerScore
+                    return "Its a tie! Scissors and Scissors!!!";
+                }
+                //console.log(playerScore, computerScore)
+            }
+
+            function game(){
+
+                for (let i = 0; i < 5; i++){
+                    const playerSelection = playerPlay();
+                    const computerSelection = computerPlay();
+                    //passes computerPlay(); through to computerSelection and playerPlay(); into playerSelection
+                    console.log(playRound(playerSelection, computerSelection));
+                    console.log(playerScore, computerScore);                 
+                //runs the game 5 times and tells the pc to randomize the computerPlay 5 times as well as tells the player to enter 5 strings
+                //also runs playRound 5 times
+                }
+                if(playerScore > computerScore){
+                    return "You won the game!";
+                }else if (playerScore < computerScore){
+                    return "You lost the game!"
+                }else if (playerScore === computerScore){
+                    return "The game is a tie!"
+                }
+                //returns a string based on the final score of the game "===" is a tie > is a win and < is a loss!!!
+
+            }
+
+
+            console.log(game());
+            //calls the game function and prints the local scope within it
+
+        </script>
+    </body>
+</html>
